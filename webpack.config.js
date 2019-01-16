@@ -1,7 +1,7 @@
 var path = require("path");
 var glob = require("glob");
 var webpack = require("webpack");
-var frontend = require("./config/global/webpack-entry-points");
+var frontend = require("./config/global/js/webpack-entry-points");
 
 function getEntries(){
 	var entries = {};

@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var prefixer = require('gulp-autoprefixer');
 var less = require('gulp-less');
 var glob = require("glob");
-var frontend = require("./config/global/gulp-entry-points");
+var frontend = require("./config/global/js/gulp-entry-points");
 var uglifycss = require("gulp-uglifycss");
 var googleWebFonts = require("gulp-google-webfonts");
 
