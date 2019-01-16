@@ -1,18 +1,21 @@
 <?php include '../global/environment.php';
-include getenv('ROOT').'/vendor/autoload.php';
 
-use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
+$cfg = include __DIR__.'/builder-config.php';
 
-(new Application('Config Builder'))
-	->register('Config Builder')
-	->setCode(function(InputInterface $input, OutputInterface $output) {
+$configfile = file_get_contents(__DIR__.'/config.php');
+
+$configfile = str_replace('{{$domain}}', $cfg['domain'], $configfile);
+$configfile = str_replace('{{$database.WEB}}', $cfg['database.WEB'], $configfile);
+$configfile = str_replace('{{$database.CLI}}', $cfg['database.CLI'], $configfile);
+
+file_put_contents(__DIR__.'/config.php', $configfile);
 
 
-	})
-	->getApplication()
-	->setDefaultCommand('echo', true) // Single command application
-	->run();
+$virtualhostfile = file_get_contents(__DIR__.'/virtualhost.conf');
+$virtualhostfile = str_replace('{{$domain}}', $cfg['domain'], $virtualhostfile);
+$virtualhostfile = str_replace('{{$path}}', getenv('ROOT'), $virtualhostfile);
+
+file_put_contents(__DIR__.'/virtualhost.conf', $virtualhostfile);
+
+unlink( __DIR__.'/builder-config.php');
+unlink( __DIR__.'/build.php');
