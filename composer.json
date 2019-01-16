@@ -1,5 +1,5 @@
 {
-	"name": "Eternity Project",
+	"name": "laborci/eternity-project",
 	"require": {
 		"laborci/eternity": "^1.0"
 	},
