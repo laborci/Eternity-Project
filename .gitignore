@@ -1,0 +1,13 @@
+.idea/*
+composer.lock
+vendor
+node_modules
+public/thumbnails/*
+public/files/*/*
+public/dist/*/*
+package-lock.json
+npm-debug.log
+config/local/*
+var/log/*/*
+var/cache/*/*
+var/log/app.log
