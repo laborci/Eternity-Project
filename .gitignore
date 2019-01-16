@@ -8,7 +8,7 @@ vendor
 node_modules
 
 public/thumbnails/*
-public/filess/*/*
+public/files/*/*
 public/dist/*/*
 
 config/local/*
