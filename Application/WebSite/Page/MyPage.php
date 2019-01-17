@@ -24,6 +24,7 @@ class MyPage extends SmartPageResponder {
 		$this->getDataBag()->set('article', $article);
 		$this->getDataBag()->set('boxcontent', 'Zsilett');
 		$this->getDataBag()->set('box', "@website/box.twig");
+		$this->getAttributesBag()->set('cache', true);
 	}
 
 }

@@ -9,7 +9,6 @@ class MyMiddleware extends Middleware {
 	public function run(){
 		$this->getDataBag()->set('name', 'Elvis Presley');
 		$this->next();
-		return;
 	}
 
 }
