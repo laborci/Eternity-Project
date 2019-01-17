@@ -46,7 +46,9 @@ gulp.task('compile-less', function () {
 	for (source in entries) {
 		gulp
 			.src(source)
-			.pipe(less())
+			.pipe(less({
+				paths:['./node_modules']
+			}))
 			.pipe(uglifycss({
 				"maxLineLen": 80,
 				"uglyComments": true
