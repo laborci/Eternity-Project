@@ -8,5 +8,10 @@
 			"Application\\": "Application/",
 			"Entity\\": "Entity/"
 		}
-	}
+	},
+	"scripts": {
+        "post-create-project-cmd": [
+            "php install.php"
+        ]
+    }
 }
