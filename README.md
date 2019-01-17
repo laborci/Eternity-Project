@@ -1,11 +1,29 @@
 # Eternity-Project
 
-```composer create-project laborci/eternity-project yourproject```
+Create the project:
 
-After the project creation process Eternity creates the two main configuration files.
+- ```composer create-project laborci/eternity-project yourproject```
+
+After the project creation process Eternity creates the two main configuration files. Check the contents of these files!
 
 - ```config/local/config.php```
 - ```config/local/virtualhost.conf```
+
+Dont forget to include the virtualhost file into your httpd.conf!
+
+Install the required node packages:
+
+- ```npm install```
+
+Make the first less build:
+
+- ```gulp build```
+
+Make the first webpack build:
+
+- ```npm run build```
+
+(use ```gulp```and ```npm run work``` for active file watcher)
 
 Create your starter database
 ```SQL
@@ -32,6 +50,8 @@ CREATE TABLE `user_log` (
 INSERT INTO `user` (`id`, `name`, `email`, `password`, `created`, `permissions`, `status`)
 VALUES (1, 'Admin', 'admin@eternity', '$2y$10$iSr05yuqV07/VqGq10NmQezwLrvpkTo0SrramL/7bSrQdAD64trrO', '2019-01-16 13:24:00', 'admin', 'active');
 ```
+
+Your project will be available at:
 
 - **http://yourproject.test**
 - **http://admin.yourproject.test**
