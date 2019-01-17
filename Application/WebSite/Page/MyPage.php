@@ -17,41 +17,13 @@ use Symfony\Component\VarDumper\VarDumper;
 class MyPage extends SmartPageResponder {
 
 	protected function prepare() {
-
-
-
 		$user = User::repository()->pick(1);
-
 		$user->getAttachmentManager('images');
-		echo $user->images->first->url;
-		$user->save();
-
 		$this->getDataBag()->set('user', $user);
-
-		$articleString = <<<EOT
-		
-! Hello
-
-
-ez itt egy új sor
-
-
-!! vééége
-EOT;
-
-		$article = ArticleGMarkParser::Service()->parse($articleString);
-
-
+		$article = ArticleGMarkParser::Service()->parse("! Hello\n\nNew block\n\n!! End of article!");
 		$this->getDataBag()->set('article', $article);
-
-
-		dump(' én is futok');
-
-		parent::prepare();
 		$this->getDataBag()->set('boxcontent', 'Zsilett');
 		$this->getDataBag()->set('box', "@website/box.twig");
-		dump($this->getDataBag()->all());
-		dump($this);
 	}
 
 }
