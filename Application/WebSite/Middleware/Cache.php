@@ -14,11 +14,12 @@ class Cache extends Middleware {
 			$cache = new FileCache(getenv('ROOT').'/var/cache/output/');
 			$cachekey = crc32($this->getRequest()->getRequestUri());
 			if($cache->exists($cachekey) && $cache->getAge($cachekey)<60){
-				$this->getResponse()->setContent($cache->get($cachekey));
+				$this->setResponse(unserialize($cache->get($cachekey)));
+				//echo $this->getResponse()->getContent();
 			}else {
 				$this->next();
 				if($this->getRequest()->attributes->getBoolean('cache', false)){
-					$cache->set($cachekey, $this->getResponse()->getContent());
+					$cache->set($cachekey, serialize($this->getResponse()));
 				}
 			}
 		}
