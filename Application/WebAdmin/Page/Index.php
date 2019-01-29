@@ -1,5 +1,6 @@
 <?php namespace Application\WebAdmin\Page;
 
+use Application\Service\AuthService;
 use Eternity\Response\Responder\SmartPageResponder;
 
 /**
@@ -15,15 +16,13 @@ class Index extends SmartPageResponder{
 	protected $authRepository;
 	protected $user;
 
-	public function __construct(\AdminAuthServiceInterface $authService, \AdminAuthenticableRepositoryInterface $authRepository) {
+	public function __construct(AuthService $authService) {
 		parent::__construct();
 		$this->authService = $authService;
-		$this->authRepository = $authRepository;
 	}
 
 	function prepare() {
-		$user = $this->authRepository->authLookup($this->authService->getAuthenticatedId());
-		dump($user);
+		$user = $this->authService->getAuthenticated();
 		$this->getDataBag()->set('user', $user);
 	}
 

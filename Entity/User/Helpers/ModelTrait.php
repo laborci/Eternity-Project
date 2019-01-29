@@ -4,10 +4,6 @@
  * px: @property-read \RedFox\Entity\Fields\StringField $name
  * px: @property-read \RedFox\Entity\Fields\StringField $email
  * px: @property-read \RedFox\Entity\Fields\PasswordField $password
- * px: @property-read \RedFox\Entity\Fields\DateTimeField $created
- * px: @property-read \RedFox\Entity\Fields\SetField $permissions
- * px: @property-read \RedFox\Entity\Fields\EnumField $status
-
  */
 trait ModelTrait{
 	private $repositoryInstance = null;

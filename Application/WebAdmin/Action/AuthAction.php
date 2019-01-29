@@ -1,7 +1,7 @@
 <?php namespace Application\WebAdmin\Action;
 
-use Codex\Authentication\AuthServiceInterface;
-use Codex\Authentication\UserLoggerInterface;
+use Application\Service\AuthService;
+use Application\Service\UserLogger;
 use Eternity\Response\Responder\JsonResponder;
 
 class AuthAction extends JsonResponder {
@@ -9,9 +9,9 @@ class AuthAction extends JsonResponder {
 	protected $authService;
 	protected $userLog;
 
-	public function __construct(\AdminAuthServiceInterface $authService, \AdminUserLoggerInterface $userLog) {
+	public function __construct(AuthService $authService, UserLogger $userLogger) {
 		$this->authService = $authService;
-		$this->userLog = $userLog;
+		$this->userLog = $userLogger;
 	}
 
 	protected function respond() {
@@ -21,11 +21,11 @@ class AuthAction extends JsonResponder {
 				if (!$this->authService->login($this->getRequestBag()->get('login'), $this->getRequestBag()->get('password'), 'admin')) {
 					$this->getResponse()->setStatusCode('401');
 				} else {
-					$this->userLog->log($this->authService->getAuthenticatedId(), UserLoggerInterface::ADMINLOGIN);
+					$this->userLog->log($this->authService->getAuthenticatedId(), UserLogger::ADMINLOGIN);
 				}
 				break;
 			case 'logout':
-				$this->userLog->log($this->authService->getAuthenticatedId(), UserLoggerInterface::ADMINLOGOUT);
+				$this->userLog->log($this->authService->getAuthenticatedId(), UserLogger::ADMINLOGOUT);
 				$this->authService->logout();
 				break;
 		}

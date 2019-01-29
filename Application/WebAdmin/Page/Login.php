@@ -10,4 +10,4 @@ use Eternity\Response\Responder\SmartPageResponder;
  * @bodyclass login
  * @template "@webadmin/Login.twig"
  */
-class Login extends SmartPageResponder { }
+class Login extends SmartPageResponder {}

@@ -3,7 +3,7 @@
 /**
  * @method \Entity\UserLog\UserLog pick(int $id, bool $strict = true)
  * @method \Entity\UserLog\UserLog[] collect(array $id_list, bool $strict = true)
- * @method \Entity\UserLog\Finder search(\RedFox\Database\Filter\Filter $filter = null)
+ * @method \Entity\UserLog\Helpers\Finder search(\RedFox\Database\Filter\Filter $filter = null)
  */
 
 trait RepositoryTrait {

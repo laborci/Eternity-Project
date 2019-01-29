@@ -4,7 +4,7 @@
  * @property-read int $id
  * @property \DateTime $datetime
  * @property int $userId
- * @property string $event
+ * @property string $type
  * @property array $description
  */
 trait EntityTrait{

@@ -3,7 +3,7 @@
 
 use Eternity\Response\Responder\Middleware;
 
-class MeasureMiddleware extends Middleware {
+class Measure extends Middleware {
 
 	public function run(){
 		$time = microtime(1);

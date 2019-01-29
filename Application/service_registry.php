@@ -1,7 +1,6 @@
 <?php
 
-use Codex\Authentication\AuthService;
-use Eternity\Application\Config;
+use Application\Config;
 use Eternity\Factory\AnnotationReaderFactory;
 use Eternity\Factory\TwigFactory;
 use Eternity\ServiceManager\ServiceContainer;
@@ -10,23 +9,25 @@ use RedFox\Database\PDOConnection\AbstractPDOConnection;
 use RedFox\Database\PDOConnection\PDOConnectionFactory;
 use Symfony\Component\HttpFoundation\Request;
 
-ServiceContainer::bind(Request::class)->factory(function (): Request { return Request::createFromGlobals(); })->shared();
-ServiceContainer::bind(\Twig_Environment::class)->factory([ TwigFactory::class, 'factory' ])->shared();
-ServiceContainer::bind(Reader::class)->factory([ AnnotationReaderFactory::class, 'factory' ]);
 
+// Register App DB Connection
 class_alias(AbstractPDOConnection::class, \AppPDOConnection::class);
-ServiceContainer::bind(\AppPDOConnection::class)->factory(function () { return PDOConnectionFactory::factory(Config::get('database')); })->shared();
+ServiceContainer::bind(\AppPDOConnection::class)->factory(function () { return PDOConnectionFactory::factory(Config::env()::database()); })->shared();
 
-class_alias(\Codex\Authentication\AuthServiceInterface::class, \AdminAuthServiceInterface::class);
-ServiceContainer::bind(\AdminAuthServiceInterface::class)->service(AuthService::class)->shared();
+// --- Framework services ---
 
-class_alias(\Codex\Authentication\UserLoggerInterface::class, \AdminUserLoggerInterface::class);
-ServiceContainer::bind(\AdminUserLoggerInterface::class)->factory(function(){return \Entity\UserLog\UserLog::repository();})->shared();
+// Register Configurations
+ServiceContainer::bind(\Eternity\Factory\AnnotationReaderConfigInterface::class)->factoryStatic([Config::class, 'annotation_reader'])->shared();
+ServiceContainer::bind(\Eternity\Factory\TwigConfigInterface::class)->factoryStatic([Config::class, 'twig'])->shared();
+ServiceContainer::bind(\RedFox\EntityGenerator\EntityGeneratorConfigInterface::class)->factoryStatic([Config::class, 'entity_generator'])->shared();
+ServiceContainer::bind(\RedFox\Entity\Attachment\AttachmentConfigInterface::class)->factoryStatic([Config::class, 'attachment'])->shared();
+ServiceContainer::bind(\Eternity\Response\Responder\SmartPageResponderConfigInterface::class)->factoryStatic([Config::class, 'smartpage_responder'])->shared();
 
-class_alias(\Codex\Authentication\AuthenticableRepositoryInterface::class, \AdminAuthenticableRepositoryInterface::class);
-ServiceContainer::bind(\AdminAuthenticableRepositoryInterface::class)->factory(function(){return \Entity\User\User::repository();})->shared();
-ServiceContainer::bind(\Codex\Authentication\AuthenticableRepositoryInterface::class)->factory(function(){return \Entity\User\User::repository();})->shared();
+// Register Eternity Services
+ServiceContainer::bind(Request::class)->factoryStatic([Request::class, 'createFromGlobals'])->shared();
+ServiceContainer::bind(\Twig_Environment::class)->factoryService([TwigFactory::class, 'factory'])->shared();
+ServiceContainer::bind(Reader::class)->factoryService([AnnotationReaderFactory::class, 'factory'])->shared();
 
-ServiceContainer::bind(\Codex\Authentication\AuthContainerInterface::class)->service(\Codex\Authentication\AuthSessionContainer::class)->shared();
-
-
+// Register Zuul Services
+ServiceContainer::bind(\Zuul\AuthenticableRepositoryInterface::class)->factoryStatic([\Entity\User\User::class, 'repository'])->shared();
+ServiceContainer::bind(\Zuul\AuthContainerInterface::class)->service(\Zuul\AuthSessionContainer::class)->shared();

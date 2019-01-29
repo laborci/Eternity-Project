@@ -1,8 +1,9 @@
-<?php
-putenv('ROOT=' . realpath(__DIR__ . '/../../'));
-putenv('CONTEXT=' . (http_response_code() ? 'WEB' : 'CLI'));
-putenv('CONFIG=' . (getenv('ROOT') . '/config/config-loader.php'));
-putenv('LANGUAGE=' . 'hu');
-putenv('TIMEZONE=' . 'Europe/Budapest');
-putenv('ERROR_LOG=' . (getenv('ROOT') . '/var/log/app.log'));
-putenv('SERVICE_REGISTRY='.(getenv('ROOT').'/Application/service_registry.php'));
+<?php return [
+	'DOMAIN'                             => 'YOUR.PROD.DOMAIN',
+	'CONTEXT'                            => (http_response_code() ? 'WEB' : 'CLI'),
+	'LANGUAGE'                           => 'hu',
+	'TIMEZONE'                           => 'Europe/Budapest',
+	'ERROR_LOG'                          => getenv('ROOT') . '/var/log/app.log',
+	'DEV_MODE'                           => false,
+	'SMARTPAGE-RESPONDER-CLIENT-VERSION' => file_get_contents(getenv('ROOT') . '/var/clientversion')
+];

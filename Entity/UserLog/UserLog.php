@@ -1,6 +1,6 @@
 <?php namespace Entity\UserLog;
 
-class UserLog extends \RedFox\Entity\Entity implements Helpers\EntityInterface{
+class UserLog extends \RedFox\Entity\Entity implements Helpers\EntityInterface {
 
 	use Helpers\EntityTrait;
 

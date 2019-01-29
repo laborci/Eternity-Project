@@ -1,8 +1,8 @@
 <?php namespace Entity\User;
 
 
-use Codex\Authentication\AuthenticableInterface;
-use Codex\Authentication\AuthenticableRepositoryInterface;
+use Zuul\AuthenticableInterface;
+use Zuul\AuthenticableRepositoryInterface;
 use RedFox\Database\Filter\Filter;
 
 class UserRepository extends \RedFox\Entity\Repository implements AuthenticableRepositoryInterface {

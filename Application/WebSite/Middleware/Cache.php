@@ -7,19 +7,20 @@ use Symfony\Component\HttpFoundation\Request;
 
 class Cache extends Middleware {
 
-
 	public function run(){
 		if($this->getRequest()->getMethod() !== Request::METHOD_GET) $this->next();
 		else{
 			$cache = new FileCache(getenv('ROOT').'/var/cache/output/');
 			$cachekey = crc32($this->getRequest()->getRequestUri());
-			if($cache->exists($cachekey) && $cache->getAge($cachekey)<60){
+			if($cache->isValid($cachekey)){
 				$this->setResponse(unserialize($cache->get($cachekey)));
-				//echo $this->getResponse()->getContent();
+				$this->getResponse()->headers->set('x-cached-until', $cache->getAge($cachekey)*-1);
 			}else {
 				$this->next();
 				if($this->getRequest()->attributes->getBoolean('cache', false)){
-					$cache->set($cachekey, serialize($this->getResponse()));
+					$cacheInterval = $this->getRequest()->attributes->getInt('cache-interval', 60);
+					$cache->set($cachekey, serialize($this->getResponse()), $cacheInterval);
+					$this->getResponse()->headers->set('x-cache-interval', $cacheInterval);
 				}
 			}
 		}

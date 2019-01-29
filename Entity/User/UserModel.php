@@ -7,7 +7,10 @@ class UserModel extends \RedFox\Entity\Model{
 	protected function relations(){}
 
 	protected function attachments(){
-		$this->hasAttachmentGroup('images');
+		$this->hasAttachmentGroup('avatar')
+			->acceptExtensions('jpg', 'png')
+			->maxFileCount(1)
+			->maxFileSize(800 * 1024);
 	}
 
 	public function setDefaults(User $object){}

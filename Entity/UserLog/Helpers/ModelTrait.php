@@ -3,7 +3,7 @@
  * px: @property-read \RedFox\Entity\Fields\IdField $id
  * px: @property-read \RedFox\Entity\Fields\DateTimeField $datetime
  * px: @property-read \RedFox\Entity\Fields\IdField $userId
- * px: @property-read \RedFox\Entity\Fields\StringField $event
+ * px: @property-read \RedFox\Entity\Fields\StringField $type
  * px: @property-read \RedFox\Entity\Fields\JsonStringField $description
 
  */

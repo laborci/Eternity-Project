@@ -5,10 +5,7 @@
  * @property string $name
  * @property string $email
  * @property string $password
- * @property \DateTime $created
- * @property array $permissions
- * @property string $status
- * @property-read \RedFox\Entity\Attachment\AttachmentManager $images
+ * @property-read \RedFox\Entity\Attachment\AttachmentManager $avatar
  */
 trait EntityTrait{
 

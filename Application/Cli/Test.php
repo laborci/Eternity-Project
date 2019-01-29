@@ -16,7 +16,7 @@ class Test extends Command {
 
 	protected function execute(InputInterface $input, OutputInterface $output) {
 		$user = User::repository()->pick(1);
-		$user->password = 'galaga2355';
+		$user->password = 'vegas';
 		$user->save();
 	}
 

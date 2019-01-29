@@ -1,24 +1,15 @@
 <?php namespace Entity\User;
 
-use Codex\Authentication\AuthenticableInterface;
+use Zuul\AuthenticableInterface;
 
 class User extends \RedFox\Entity\Entity implements Helpers\EntityInterface, AuthenticableInterface {
 
 	use Helpers\EntityTrait;
 
 	public function __toString() { return (string)$this->id; }
-
 	public function getId(): int { return $this->id; }
-	public function checkPassword($password): bool {
-		$result = static::model()->password->check($password, $this->password);
-		dump($result);
-		return $result;
-	}
-	public function checkPermission($permission = null): bool {
-		$result = is_null($permission) || in_array($permission, $this->permissions);
-		return $result;
-	}
-
-	public function getAdminAvatar() { return $this->images->first ? $this->images->first->thumbnail->crop(64, 64)->png : ''; }
+	public function checkPassword($password): bool { return static::model()->password->check($password, $this->password); }
+	public function checkPermission($permission = null): bool { return is_null($permission) || in_array($permission, $this->permissions); }
+	public function getAdminAvatar() { return $this->avatar->first ? $this->avatar->first->thumbnail->crop(64, 64)->png : ''; }
 
 }
