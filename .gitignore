@@ -1,4 +1,4 @@
-.idea/*
+.idea
 
 composer.lock
 package-lock.json
@@ -15,4 +15,4 @@ config/local/*
 
 var/log/*/*
 var/cache/*/*
-var/log/app.log
+var/log/*
