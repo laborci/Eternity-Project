@@ -45,6 +45,7 @@ class Init extends Command {
 
 		$user->name = "Elvis Presley";
 		$user->email = "elvis@presley.com";
+		$user->password = "vegas";
 		$user->permissions = [User::PERMISSIONS_ADMIN];
 		$user->status = User::STATUS_ACTIVE;
 
