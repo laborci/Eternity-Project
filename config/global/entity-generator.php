@@ -1,4 +1,5 @@
 <?php return [
+	'path'=>'Entity/',
 	'databases'=>[
 		'database' => \AppPDOConnection::class
 	],
