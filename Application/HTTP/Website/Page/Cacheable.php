@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Application\WebSite\Page;
+namespace Application\HTTP\Website\Page;
 
 
 trait Cacheable {

@@ -1,4 +1,4 @@
-<?php namespace Application\WebAdmin\Page;
+<?php namespace Application\HTTP\Admin\Page;
 
 use Application\Service\AuthService;
 use Eternity\Response\Responder\SmartPageResponder;
@@ -7,7 +7,7 @@ use Eternity\Response\Responder\SmartPageResponder;
  * @css /dist/admin/style.css
  * @js  /dist/admin/app.js
  * @title Admin
- * @template "@webadmin/Index.twig"
+ * @template "@admin/Index.twig"
  */
 class Index extends SmartPageResponder{
 

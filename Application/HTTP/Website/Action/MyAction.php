@@ -1,4 +1,4 @@
-<?php namespace Application\WebSite\Action;
+<?php namespace Application\HTTP\Website\Action;
 
 
 use Eternity\Response\Responder\JsonResponder;

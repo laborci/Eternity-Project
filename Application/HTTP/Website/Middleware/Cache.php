@@ -1,4 +1,4 @@
-<?php namespace Application\WebSite\Middleware;
+<?php namespace Application\HTTP\Website\Middleware;
 
 
 use Eternity\Cache\FileCache;

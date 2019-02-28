@@ -1,12 +1,11 @@
-<?php namespace Application\WebSite;
+<?php namespace Application\HTTP\WebSite;
 
-use Application\WebSite\Middleware\Cache;
-use Application\WebSite\Middleware\Measure;
+use Application\HTTP\Website\Middleware\Cache;
+use Application\HTTP\Website\Middleware\Measure;
 use Eternity\Routing\Router;
 use RedFox\Entity\Attachment\ThumbnailResponder;
 
 class Site extends \Eternity\Application\WebApp {
-
 
 	public function __construct() {
 		// session_start();

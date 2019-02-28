@@ -1,7 +1,7 @@
-<?php namespace Application\WebSite\Page;
+<?php namespace Application\HTTP\Website\Page;
 
 
-use Application\WebSite\Service\ArticleGMarkParser;
+use Application\HTTP\Website\Service\ArticleGMarkParser;
 use Entity\User\User;
 use Eternity\Response\Responder\SmartPageResponder;
 use Symfony\Component\HttpFoundation\File\File;

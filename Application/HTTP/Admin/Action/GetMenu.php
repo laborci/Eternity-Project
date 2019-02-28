@@ -1,6 +1,6 @@
-<?php namespace Application\WebAdmin\Action;
+<?php namespace Application\HTTP\Admin\Action;
 
-use Application\WebAdmin\Form as Form;
+use Application\HTTP\Admin\Form as Form;
 
 class GetMenu extends \Codex\Responder\Menu {
 	protected function createMenu() {

@@ -1,4 +1,4 @@
-<?php namespace Application\WebSite\Service;
+<?php namespace Application\HTTP\Website\Service;
 
 use Eternity\ServiceManager\Service;
 use Eternity\ServiceManager\SharedService;

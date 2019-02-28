@@ -1,4 +1,4 @@
-<?php namespace Application\WebAdmin;
+<?php namespace Application\HTTP\Admin;
 
 use Eternity\Routing\Router;
 use RedFox\Entity\Attachment\ThumbnailResponder;

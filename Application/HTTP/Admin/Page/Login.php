@@ -1,4 +1,4 @@
-<?php namespace Application\WebAdmin\Page;
+<?php namespace Application\HTTP\Admin\Page;
 
 
 use Eternity\Response\Responder\SmartPageResponder;
@@ -8,6 +8,6 @@ use Eternity\Response\Responder\SmartPageResponder;
  * @js  /dist/admin/app.js
  * @title Admin
  * @bodyclass login
- * @template "@webadmin/Login.twig"
+ * @template "@admin/Login.twig"
  */
 class Login extends SmartPageResponder {}

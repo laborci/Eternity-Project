@@ -1,7 +1,7 @@
-<?php namespace Application\WebSite\Middleware;
+<?php namespace Application\HTTP\Website\Middleware;
 
 
-use Application\WebSite\Action\MyAction;
+use Application\HTTP\Website\Action\MyAction;
 use Eternity\Response\Responder\Middleware;
 
 class MyMiddleware extends Middleware {

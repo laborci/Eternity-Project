@@ -1,7 +1,7 @@
-<?php namespace Application\WebAdmin\Middleware;
+<?php namespace Application\HTTP\Admin\Middleware;
 
 use Application\Service\AuthService;
-use Application\WebAdmin\Page\Login;
+use Application\HTTP\Admin\Page\Login;
 use Eternity\Response\Responder\Middleware;
 
 class AuthCheck extends Middleware {

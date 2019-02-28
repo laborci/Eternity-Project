@@ -1,4 +1,4 @@
-<?php namespace Application\WebAdmin\Form;
+<?php namespace Application\HTTP\Admin\Form;
 
 use Codex\AdminDescriptor;
 use Codex\FormDataManager;

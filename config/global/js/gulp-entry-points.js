@@ -1,4 +1,4 @@
 module.exports = {
-	"./Application/WebSite/@css": "www/",
-	"./Application/WebAdmin/@css": "admin/"
+	"./Application/HTTP/Website/@css": "www/",
+	"./Application/HTTP/Admin/@css": "admin/"
 };

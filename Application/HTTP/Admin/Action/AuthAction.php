@@ -1,4 +1,4 @@
-<?php namespace Application\WebAdmin\Action;
+<?php namespace Application\HTTP\Admin\Action;
 
 use Application\Service\AuthService;
 use Application\Service\UserLogger;
