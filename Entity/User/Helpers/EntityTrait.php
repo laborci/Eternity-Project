@@ -7,7 +7,6 @@
  * @property string $password
  * @property array $permissions
  * @property string $status
- * @property string $login
  * @property-read \RedFox\Entity\Attachment\AttachmentManager $avatar
  */
 trait EntityTrait{

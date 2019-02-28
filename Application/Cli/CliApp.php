@@ -17,9 +17,10 @@ class CliApp implements SharedService {
 		$this->application->add(new UpdateEntities());
 		$this->application->add(new NodeChanges());
 		$this->application->add(new ClientVersion());
-		$this->application->add(new Test());
 		$this->application->add(new BuildConfig());
 		$this->application->add(new GenerateVhost());
+		$this->application->add(new Test());
+		$this->application->add(new Init());
 	}
 
 	public function run() {
