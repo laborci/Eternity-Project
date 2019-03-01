@@ -32,14 +32,14 @@ class Init extends Command {
 
 		$connection->createSmartAccess()->query("CREATE TABLE `user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `password` char(255) COLLATE utf8_hungarian_ci DEFAULT NULL COMMENT 'password',
-  `permissions` set('admin','super') COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `status` enum('active','inactive') COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_hungarian_ci NOT NULL DEFAULT '',
+  `email` varchar(255) COLLATE utf8_hungarian_ci NOT NULL DEFAULT '',
+  `password` char(255) COLLATE utf8_hungarian_ci NOT NULL DEFAULT '' COMMENT 'password',
+  `permissions` set('admin','super') COLLATE utf8_hungarian_ci NOT NULL DEFAULT '',
+  `status` enum('active','inactive') COLLATE utf8_hungarian_ci NOT NULL DEFAULT 'active',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;" );
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;" );
 
 		$user = new User();
 

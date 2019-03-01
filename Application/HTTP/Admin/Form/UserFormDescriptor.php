@@ -23,7 +23,6 @@ class UserFormDescriptor extends AdminDescriptor {
 		$formDataManager->addField('name', 'name')->addValidator(new StringLengthValidator(5));
 		$formDataManager->addField('email', 'e-mail');
 		$formDataManager->addField('password', 'jelszó');
-		$formDataManager->addField('created', 'létrehozva');
 		$formDataManager->addField('status', 'Státusz');
 		$formDataManager->addField('permissions', 'jogosultságok');
 	}
@@ -39,7 +38,6 @@ class UserFormDescriptor extends AdminDescriptor {
 		$sect->input('text', 'email');
 		$sect->input('text', 'name');
 		$sect->input('password', 'password');
-		$sect->input('datetime', 'created');//->optReadonly(true);
 
 		$sect = $formHandler->addSection();
 		$sect->input('select', 'status')
