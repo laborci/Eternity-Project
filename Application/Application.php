@@ -8,6 +8,8 @@ use Eternity\Routing\DomainRouter;
 class Application extends \Eternity\Application\Application {
 
 	protected function web() {
+        
+        \Eternity\Logger\RemoteLog::Service();
 
 		$router = DomainRouter::Service();
 		$router->launch(HTTP\Website\Site::class, Config::env()::domain());
