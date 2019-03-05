@@ -15,10 +15,14 @@ use RedFox\EntityGenerator\EntityGeneratorConfigInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 
-// Register App DB Connection
+#region AppPDOConnection
 class_alias(AbstractPDOConnection::class, \AppPDOConnection::class);
-ServiceContainer::shared(\AppPDOConnection::class)->factory(function () {	return PDOConnectionFactory::factory(Config::env()::database(), [\Eternity\Logger\RemoteLog::Service(), 'sql']);});
+ServiceContainer::shared(\AppPDOConnection::class)->factory(function () {	return PDOConnectionFactory::factory(Config::env()::database(), [ ServiceContainer::get(\Eternity\Logger\LoggerInterface::class), 'sql']);});
+#endregion
 
+#region Logger
+ServiceContainer::shared(\Eternity\Logger\LoggerInterface::class)->service( getenv('DEV_MODE') ? \Eternity\Logger\RemoteLog::class : \Eternity\Logger\DummyLogger::class);
+#endregion
 
 #region Configs
 ServiceContainer::shared(\Eternity\Logger\RemoteLogConfigInterface::class)->factoryStatic([Config::class, 'remote_log']);

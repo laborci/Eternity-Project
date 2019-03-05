@@ -11,7 +11,10 @@
 		                          'interface' => \Eternity\Response\Responder\SmartPageResponderConfigInterface::class],
 		'annotation-reader'   => ['value'     => include "global/annotation-reader.php",
 		                          'interface' => \Eternity\Factory\AnnotationReaderConfigInterface::class],
+		'remote-log'          => ['env'       => ['host' => 'REMOTE_LOG_HOST', 'port' => 'REMOTE_LOG_PORT'],
+		                          'interface' => \Eternity\Logger\RemoteLogConfigInterface::class],
 		'env'                 => ['env' => ['root', 'domain', 'context', 'language', 'timezone', 'error_log', 'dev_mode', 'database']],
+
 	],
-	'values' => [],
+	'values' => include "global/app-config.php",
 ];
