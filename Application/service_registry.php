@@ -22,6 +22,7 @@ ServiceContainer::shared(\AppPDOConnection::class)->factory(function () {	return
 
 #region Logger
 ServiceContainer::shared(\Eternity\Logger\LoggerInterface::class)->service( getenv('DEV_MODE') ? \Eternity\Logger\RemoteLog::class : \Eternity\Logger\DummyLogger::class);
+ServiceContainer::shared(\Eternity\Logger\ErrorHandlerRegistratorInterface::class)->service( getenv('DEV_MODE') ? \Eternity\Logger\RemoteLog::class : \Eternity\Logger\DummyLogger::class);
 #endregion
 
 #region Configs
