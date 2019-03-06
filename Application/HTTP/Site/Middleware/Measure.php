@@ -1,4 +1,4 @@
-<?php namespace Application\HTTP\Website\Middleware;
+<?php namespace Application\HTTP\Site\Middleware;
 
 
 use Eternity\Response\Responder\Middleware;

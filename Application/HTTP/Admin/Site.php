@@ -3,18 +3,9 @@
 use Eternity\Routing\Router;
 use RedFox\Entity\Attachment\ThumbnailResponder;
 
-/**
- * @domain admin.@
- */
 class Site extends \Eternity\Application\WebApp {
 
-	public function __construct() {
-		session_start();
-	}
-
-	function run() {
-		$router = Router::Service();
-
+	function route(Router $router) {
 		$router->post('/login', Action\AuthAction::class, ['method'=>'login'])();
 
 		$router->pipe(Middleware\AuthCheck::class);
@@ -33,5 +24,3 @@ class Site extends \Eternity\Application\WebApp {
 
 	}
 }
-
-

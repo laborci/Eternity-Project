@@ -1,4 +1,4 @@
-<?php namespace Application\HTTP\Website\Page;
+<?php namespace Application\HTTP\Site\Page;
 
 
 use Application\HTTP\Website\Service\ArticleGMarkParser;
