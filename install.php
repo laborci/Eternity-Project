@@ -12,4 +12,4 @@ file_put_contents('package.json', json_encode($package, JSON_PRETTY_PRINT|JSON_U
 
 rename('_gitignore', '.gitignore');
 
-unlink __FILE__;
+unlink (__FILE__);
