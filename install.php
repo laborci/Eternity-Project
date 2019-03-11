@@ -11,3 +11,5 @@ $package['name'] = $project;
 file_put_contents('package.json', json_encode($package, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES));
 
 rename('_gitignore', '.gitignore');
+
+unlink __FILE__;
