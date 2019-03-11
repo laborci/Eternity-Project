@@ -11,8 +11,14 @@ public/thumbnails/*
 public/files/*/*
 public/dist/*/*
 
-config/local/*
+etc/vhost/virtualhost.conf
+etc/ini/env.local.ini
+etc/env.WEB.php
+etc/env.CLI.php
 
 var/log/*/*
 var/cache/*/*
 var/log/*
+var/clientversion
+
+Application/Service/Config.php

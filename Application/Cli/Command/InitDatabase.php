@@ -1,4 +1,4 @@
-<?php namespace Application\Cli;
+<?php namespace Application\Cli\Command;
 
 use Entity\User\User;
 use Eternity\ServiceManager\ServiceContainer;
@@ -6,11 +6,9 @@ use RedFox\Database\PDOConnection\AbstractPDOConnection;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Question\Question;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
+class InitDatabase extends Command {
 
-class Init extends Command {
 	protected function configure() {
 		$this
 			->setName('init');
@@ -21,7 +19,7 @@ class Init extends Command {
 		/** @var AbstractPDOConnection $connection */
 		$connection = ServiceContainer::get(\AppPDOConnection::class);
 
-		$connection->createSmartAccess()->query("CREATE TABLE `user_log` (
+		$connection->createSmartAccess()->query("CREATE TABLE  IF NOT EXISTS `user_log` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `datetime` datetime DEFAULT NULL,
   `userId` int(11) unsigned NOT NULL,
@@ -30,7 +28,7 @@ class Init extends Command {
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=253 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;");
 
-		$connection->createSmartAccess()->query("CREATE TABLE `user` (
+		$connection->createSmartAccess()->query("CREATE TABLE  IF NOT EXISTS `user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_hungarian_ci NOT NULL DEFAULT '',
   `email` varchar(255) COLLATE utf8_hungarian_ci NOT NULL DEFAULT '',
@@ -39,14 +37,14 @@ class Init extends Command {
   `status` enum('active','inactive') COLLATE utf8_hungarian_ci NOT NULL DEFAULT 'active',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;" );
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;");
 
 		$user = new User();
 
 		$user->name = "Elvis Presley";
 		$user->email = "elvis@presley.com";
 		$user->password = "vegas";
-		$user->permissions = [User::PERMISSIONS_ADMIN];
+		$user->permissions = [ User::PERMISSIONS_ADMIN ];
 		$user->status = User::STATUS_ACTIVE;
 
 		$user->save();

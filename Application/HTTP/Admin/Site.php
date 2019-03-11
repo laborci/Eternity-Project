@@ -3,13 +3,15 @@
 use Eternity\Routing\Router;
 use RedFox\Entity\Attachment\ThumbnailResponder;
 
-class Site extends \Eternity\Application\WebApp {
+class Site extends \Eternity\Application\WebSite {
 
 	function route(Router $router) {
-		$router->post('/login', Action\AuthAction::class, ['method'=>'login'])();
+
+ 
+		$router->post('/login', Action\AuthAction::class, [ 'method' => 'login' ])();
 
 		$router->pipe(Middleware\AuthCheck::class);
-		$router->post('/logout', Action\AuthAction::class, ['method'=>'logout'])();
+		$router->post('/logout', Action\AuthAction::class, [ 'method' => 'logout' ])();
 
 		$router->get('/thumbnails/*', ThumbnailResponder::class)();
 		$router->get('/menu', Action\GetMenu::class)();
@@ -21,6 +23,5 @@ class Site extends \Eternity\Application\WebApp {
 		$router->get('/get-active-users', Action\GetActiveUsers::class)();
 
 		Form\UserFormDescriptor::createRoutes($router);
-
 	}
 }

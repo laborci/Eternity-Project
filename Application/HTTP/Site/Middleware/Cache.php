@@ -3,14 +3,19 @@
 
 use Eternity\Cache\FileCache;
 use Eternity\Response\Responder\Middleware;
+use Eternity\Response\Responder\SmartPageResponderConfigInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 class Cache extends Middleware {
 
+	public function __construct(SmartPageResponderConfigInterface $config){
+		$this->config = $config;
+	}
+
 	public function run(){
 		if($this->getRequest()->getMethod() !== Request::METHOD_GET) $this->next();
 		else{
-			$cache = new FileCache(getenv('ROOT').'/var/cache/output/');
+			$cache = new FileCache($this->config::cache_path());
 			$cachekey = crc32($this->getRequest()->getRequestUri());
 			if($cache->isValid($cachekey)){
 				$this->setResponse(unserialize($cache->get($cachekey)));

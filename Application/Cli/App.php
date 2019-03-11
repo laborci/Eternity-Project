@@ -1,10 +1,11 @@
 <?php namespace Application\Cli;
 
-use Eternity\Cli\{BuildConfig, ClientVersion, NodeChanges, GenerateVhost};
+use Eternity\Cli\{BuildConfig, BuildEnv, ClientVersion, NodeChanges, GenerateVhost};
 use Eternity\ServiceManager\{Service, SharedService};
 use RedFox\Cli\{CreateEntity, UpdateEntities};
+use Application\Cli\Command;
 
-class CliApp implements SharedService {
+class App implements SharedService {
 
 	use Service;
 
@@ -19,12 +20,12 @@ class CliApp implements SharedService {
 		$this->application->add(new ClientVersion());
 		$this->application->add(new BuildConfig());
 		$this->application->add(new GenerateVhost());
-		$this->application->add(new Test());
-		$this->application->add(new Init());
+		$this->application->add(new BuildEnv());
+
+		$this->application->add(new Command\Test());
+		$this->application->add(new Command\InitDatabase());
 	}
 
-	public function run() {
-		$this->application->run();
-	}
+	public function run() { $this->application->run(); }
 
 }

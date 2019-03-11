@@ -1,11 +1,5 @@
 {% extends('@smartpage/smartpage.twig') %}
 
 {% block content %}
-	{{ article|raw }}
-
-	<i class="fas fa-user"></i>
-	<i>Hello </i>
-	<b>{{ user.name }}!</b>
-	<img src="{{ user.images.first.thumbnail.width(101).png }}">
-	{{ include(box) }}
+	Hello
 {% endblock %}

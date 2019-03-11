@@ -1,12 +1,17 @@
 {
-	"name": "laborci/eternity-project",
-	"require": {
-		"laborci/eternity": "^1.0.13"
-	},
-	"autoload": {
-		"psr-4": {
-			"Application\\": "Application/",
-			"Entity\\": "Entity/"
-		}
-	}
+    "name": "Eternity-Project",
+    "require": {
+        "laborci/eternity": "^1.0.13"
+    },
+    "autoload": {
+        "psr-4": {
+            "Application\\": "Application/",
+            "Entity\\": "Application/Entity/"
+        }
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "php project-init.php"
+        ]
+    }
 }

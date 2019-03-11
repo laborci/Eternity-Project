@@ -1,19 +1,13 @@
 <?php
 
-use Application\Config;
-use Eternity\Factory\AnnotationReaderConfigInterface;
+use Application\Service\Config;
 use Eternity\Factory\AnnotationReaderFactory;
-use Eternity\Factory\TwigConfigInterface;
 use Eternity\Factory\TwigFactory;
-use Eternity\Response\Responder\SmartPageResponderConfigInterface;
 use Eternity\ServiceManager\ServiceContainer;
 use Minime\Annotations\Reader;
 use RedFox\Database\PDOConnection\AbstractPDOConnection;
 use RedFox\Database\PDOConnection\PDOConnectionFactory;
-use RedFox\Entity\Attachment\AttachmentConfigInterface;
-use RedFox\EntityGenerator\EntityGeneratorConfigInterface;
 use Symfony\Component\HttpFoundation\Request;
-
 
 #region AppPDOConnection
 class_alias(AbstractPDOConnection::class, \AppPDOConnection::class);
@@ -21,8 +15,8 @@ ServiceContainer::shared(\AppPDOConnection::class)->factory(function () {	return
 #endregion
 
 #region Logger
-ServiceContainer::shared(\Eternity\Logger\LoggerInterface::class)->service( getenv('DEV_MODE') ? \Eternity\Logger\RemoteLog::class : \Eternity\Logger\DummyLogger::class);
-ServiceContainer::shared(\Eternity\Logger\ErrorHandlerRegistratorInterface::class)->service( getenv('DEV_MODE') ? \Eternity\Logger\RemoteLog::class : \Eternity\Logger\DummyLogger::class);
+ServiceContainer::shared(\Eternity\Logger\LoggerInterface::class)->service( env('DEV_MODE') ? \Eternity\Logger\RemoteLog::class : \Eternity\Logger\DummyLogger::class);
+ServiceContainer::shared(\Eternity\Logger\ErrorHandlerRegistratorInterface::class)->service( env('DEV_MODE') ? \Eternity\Logger\RemoteLog::class : \Eternity\Logger\DummyLogger::class);
 #endregion
 
 #region Configs

@@ -1,11 +1,7 @@
 <?php namespace Application\HTTP\Site\Page;
 
 
-use Application\HTTP\Website\Service\ArticleGMarkParser;
-use Entity\User\User;
 use Eternity\Response\Responder\SmartPageResponder;
-use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * @template "@website/MyPage.twig"
@@ -17,14 +13,6 @@ use Symfony\Component\VarDumper\VarDumper;
 class MyPage extends SmartPageResponder {
 
 	protected function prepare() {
-		$user = User::repository()->pick(1);
-		$user->getAttachmentManager('images');
-		$this->getDataBag()->set('user', $user);
-		$article = ArticleGMarkParser::Service()->parse("! Hello\n\nNew block\n\n!! End of article!");
-		$this->getDataBag()->set('article', $article);
-		$this->getDataBag()->set('boxcontent', 'Zsilett');
-		$this->getDataBag()->set('box', "@website/box.twig");
-		$this->getAttributesBag()->set('cache', true);
 	}
 
 }
